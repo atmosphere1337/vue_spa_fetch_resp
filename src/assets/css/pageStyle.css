@@ -1,0 +1,57 @@
+@media only screen and (max-width: 768px)
+{
+	.resp {background-color: red}
+}
+@media only screen and (min-width: 768px)
+{
+	.resp {background-color: blue}
+}
+@media only screen and (min-width: 1080px)
+{
+	.resp {background-color: yellow}
+}
+@media only screen and (min-width: 1600px)
+{
+	.resp {background-color: green}
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(170,255,170);
+}
+.item {
+	width: 700px;
+	border: solid;
+	border-radius: 10px;
+	background-color: rgb(225,225,255);
+}
+.form-search {
+	margin: 20px;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: rgb(200,200,255);
+}
+.form-search input {
+	border: solid;
+	border-radius: 5px;
+	background-color: white;
+	width: 400px;
+}
+.form-search button {
+	border: solid;
+	border-radius: 5px;
+	background-color: white;
+	margin-left: 15px;
+	padding: 0px 10px;
+}
+.form-search button:hover { background-color: rgb(50,255,50); }
+.form-search button:active { background-color: rgb(125,255,125); box-shadow: 2px 2px 2px 2px black}
+.result {
+	background-color: rgb(255, 215, 215);
+	border-radius: 15px;
+	margin: 20px;
+	padding: 25px;
+}

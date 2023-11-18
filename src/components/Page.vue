@@ -1,12 +1,18 @@
 <template>
 	<meta charset="utf-8">
-	<div class="form-search">
-		<input v-model="search_field">
-		<button @click="send_request">Search</button>
+	<div class="container">
+		<div class="item">
+			<div class="form-search">
+				<input v-model="search_field">
+				<button @click="send_request">Search</button>
+			</div>
+			<div class="result" v-if="result_not_empty">
+				<ul>
+					<li v-for="elm in search_result">{{ elm.value }}</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	<ul>
-		<li v-for="elm in search_result">{{ elm.value }}</li>
-	</ul>
 </template>
 
 <script setup>
@@ -16,6 +22,7 @@
 	const secret = import.meta.env.VITE_SECRET_KEY;
 	const search_field = ref("москва хабар");
 	const search_result = ref([]);
+	const result_not_empty = computed( () => search_result.value.length > 0);
 	function send_request()
 	{
 		const url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
@@ -36,11 +43,4 @@
 		fetch(url, options).then(handler1).then(handler2).catch(handler3);
 	}
 </script>
-<style>
-	.form-search {
-		margin: 20px;
-	}
-	.form-search input {
-		color: blue;
-	}
-</style>
+<style></style>
