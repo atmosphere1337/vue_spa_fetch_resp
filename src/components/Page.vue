@@ -1,7 +1,11 @@
 <template>
 	<meta charset="utf-8">
+	<div v-if="apikey_env_doesnt_exist" style="color: red">
+		Api key is missing. Make sure you created .env file in root directory and put VITE_API_KEY=*** line in it. 
+		*** is your api key you were provided in https://dadata.ru/profile/#info
+	</div>
 	<div class="container">
-		<div class="item">
+		<div class="item resp">
 			<div class="form-search">
 				<input v-model="search_field">
 				<button @click="send_request">Search</button>
@@ -19,10 +23,10 @@
 	import {ref, computed} from 'vue';
 
 	const api = import.meta.env.VITE_API_KEY;
-	const secret = import.meta.env.VITE_SECRET_KEY;
 	const search_field = ref("москва хабар");
 	const search_result = ref([]);
 	const result_not_empty = computed( () => search_result.value.length > 0);
+	const apikey_env_doesnt_exist = computed( () => api == undefined || api == "");
 	function send_request()
 	{
 		const url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
